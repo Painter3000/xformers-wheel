@@ -27,6 +27,28 @@ This repository provides a freshly compiled wheel for:
 - Consistent multi-view 3D reconstruction
 - All 6 camera angles render correctly with consistent geometry
 
+## ⚠️ Update (Juni 2026)
+
+Since xformers **0.0.35+**, Facebook Research provides official pre-built wheels
+for PyTorch 2.8.0+ on PyPI. Before using this wheel, check if the official version
+works for your use case:
+
+```bash
+pip install xformers --index-url https://download.pytorch.org/whl/cu128
+```
+
+**Use this wheel if:**
+- The official wheel pulls in a wrong torch version as dependency
+- You need explicit `sm_120` (Blackwell) optimization
+- You are on HF ZeroGPU and need `--no-deps` installation
+
+## Alternatives
+
+| Option | When to use |
+|--------|------------|
+| Official PyPI wheel (0.0.35+) | torch 2.10.0+ environments |
+| This wheel (0.0.33, sm_120) | torch 2.8.0 + Blackwell ZeroGPU |
+
 ## How to use on Hugging Face ZeroGPU Spaces
 
 In your `app.py`:
