@@ -20,6 +20,13 @@ This repository provides a freshly compiled wheel for:
 - Linux x86_64
 - CUDA architecture: **sm_120 (Blackwell only)**
 
+## ✅ Tested & Verified
+
+**Tested on Hugging Face ZeroGPU with FaceLift** — ✅ Works perfectly!
+- `sparse_mv_attention` optimized for Blackwell
+- Consistent multi-view 3D reconstruction
+- All 6 camera angles render correctly with consistent geometry
+
 ## How to use on Hugging Face ZeroGPU Spaces
 
 In your `app.py`:
@@ -36,7 +43,7 @@ except ImportError:
     subprocess.check_call([
         sys.executable, "-m", "pip", "install",
         "--no-deps",
-        "https://github.com/Painter3000/xformers-wheel/releases/download/v1.0.0/xformers-0.0.32-cp310-cp310-linux_x86_64.whl"
+        "https://github.com/Painter3000/xformers-wheel/releases/download/v0.0.33/xformers-0.0.33-cp39-abi3-linux_x86_64.whl"
     ])
     import xformers
     print("✅ xformers installed")
@@ -51,10 +58,14 @@ Built via GitHub Actions using:
 - Base image: `nvidia/cuda:12.8.0-devel-ubuntu22.04`
 - Python 3.10 explicitly installed
 - PyTorch 2.8.0 from `https://download.pytorch.org/whl/cu128`
-- Source: `git+https://github.com/facebookresearch/xformers.git@v0.0.32`
+- Source: `git+https://github.com/facebookresearch/xformers.git@v0.0.33`
 - `TORCH_CUDA_ARCH_LIST="12.0"` (Blackwell only)
 - `FORCE_CUDA=1`
 - `--no-build-isolation` to use the pre-installed torch
+
+**Wheel details:**
+- `xformers-0.0.33+ac00641.d20260606-cp39-abi3-linux_x86_64.whl`
+- **cp39-abi3**: Compatible with Python 3.9+ (stable ABI)
 
 > ⚠️ **Why only sm_120?**
 > Building for multiple CUDA architectures simultaneously (sm_70, sm_75, sm_80, sm_86, sm_90, sm_120) 
@@ -76,8 +87,8 @@ compilation, including `xformers`, `diff-gaussian-rasterization`,
 `simple-knn`, and similar packages from the 3D Gaussian Splatting
 and diffusion model ecosystem.
 
-Greetings to the ~50-200 people worldwide who are dealing with exactly
-this problem right now. You're not alone! 👋😄
+**Greetings to the ~50-200 people worldwide who are dealing with exactly
+this problem right now. The solution exists now!** 👋😄
 
 ## Related issues
 - https://discuss.huggingface.co/t/nvidia-rtx-pro-6000-instead-of-h200-for-zerogpu/175960
