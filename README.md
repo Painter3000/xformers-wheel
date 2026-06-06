@@ -65,7 +65,7 @@ except ImportError:
     subprocess.check_call([
         sys.executable, "-m", "pip", "install",
         "--no-deps",
-        "https://github.com/Painter3000/xformers-wheel/releases/download/v0.0.33/xformers-0.0.33-cp39-abi3-linux_x86_64.whl"
+        "https://github.com/Painter3000/xformers-wheel/releases/download/v0.0.33/xformers-0.0.33+ac00641.d20260606-cp39-abi3-linux_x86_64.whl"
     ])
     import xformers
     print("✅ xformers installed")
@@ -80,7 +80,7 @@ Built via GitHub Actions using:
 - Base image: `nvidia/cuda:12.8.0-devel-ubuntu22.04`
 - Python 3.10 explicitly installed
 - PyTorch 2.8.0 from `https://download.pytorch.org/whl/cu128`
-- Source: `git+https://github.com/facebookresearch/xformers.git@v0.0.33`
+- Source: `git+https://github.com/facebookresearch/xformers.git@v0.0.32`
 - `TORCH_CUDA_ARCH_LIST="12.0"` (Blackwell only)
 - `FORCE_CUDA=1`
 - `--no-build-isolation` to use the pre-installed torch
@@ -88,6 +88,7 @@ Built via GitHub Actions using:
 **Wheel details:**
 - `xformers-0.0.33+ac00641.d20260606-cp39-abi3-linux_x86_64.whl`
 - **cp39-abi3**: Compatible with Python 3.9+ (stable ABI)
+- Built from commit `ac0064145d87ae73e65bf93d982af64257c8a2af` (v0.0.32 tag)
 
 > ⚠️ **Why only sm_120?**
 > Building for multiple CUDA architectures simultaneously (sm_70, sm_75, sm_80, sm_86, sm_90, sm_120) 
