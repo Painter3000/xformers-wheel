@@ -18,7 +18,7 @@ This repository provides a freshly compiled wheel for:
 - PyTorch 2.8.0
 - CUDA 12.8 (cu128)
 - Linux x86_64
-- CUDA architectures: sm_70, sm_75, sm_80, sm_86, sm_90, sm_120 (Blackwell)
+- CUDA architecture: **sm_120 (Blackwell only)**
 
 ## How to use on Hugging Face ZeroGPU Spaces
 
@@ -52,9 +52,15 @@ Built via GitHub Actions using:
 - Python 3.10 explicitly installed
 - PyTorch 2.8.0 from `https://download.pytorch.org/whl/cu128`
 - Source: `git+https://github.com/facebookresearch/xformers.git@v0.0.32`
-- `TORCH_CUDA_ARCH_LIST="7.0;7.5;8.0;8.6;9.0;12.0"`
+- `TORCH_CUDA_ARCH_LIST="12.0"` (Blackwell only)
 - `FORCE_CUDA=1`
 - `--no-build-isolation` to use the pre-installed torch
+
+> ⚠️ **Why only sm_120?**
+> Building for multiple CUDA architectures simultaneously (sm_70, sm_75, sm_80, sm_86, sm_90, sm_120) 
+> causes **Out of Memory (OOM)** errors on GitHub Actions runners (Exit code 137). 
+> Since ZeroGPU Spaces use RTX Pro 6000 Blackwell (sm_120), this wheel is optimized 
+> for that specific architecture to avoid compilation failures.
 
 ## Related repository
 
